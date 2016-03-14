@@ -9,13 +9,16 @@
 title: Hi-Ruby中文站
 email: support@hi-ruby.com
 description: 
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Hi-Ruby中文站
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://www.hi-ruby.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+twitter_username: bluebu2010
+github_username:  bluebu
 
 # Build settings
 markdown: kramdown
+paginate: 10
+paginate_path: "/page/:num"
+
+gems: 
+  - jekyll-paginate

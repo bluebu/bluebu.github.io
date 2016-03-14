@@ -9,7 +9,7 @@ layout: default
 </ul>
 <% end -%> -->
 <ul class="articles">
-  {% for post in site.posts %}
+  {% for post in paginator.posts %}
   <li>
     <h2>
         <a class="post-link" href="{{ post.url }}" target="_blank" title="{{ post.title }}">{{ post.title }}</a>
@@ -27,3 +27,19 @@ layout: default
 <!-- <div>
 <%= paginate @articles, theme: "bootstrap" %>
 </div> -->
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  <ul>
+    {% for page in (1..paginator.total_pages) %}
+        {% if page == paginator.page %}
+          <li class="disabled"><a href="{{ paginator.paginate_path | prepend: site.baseurl | replace: 'page//', '/' | replace: ':num', page }}">{{ page }}</a></li>
+        {% elsif page == 1 %}
+          <li><a href="{{ '/index.html' | prepend: site.baseurl | replace: 'page//', '/' }}">{{ page }}</a></li>
+        {% else %}
+          <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: 'page//', '/' | replace: ':num', page }}">{{ page }}</a></li>
+        {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
