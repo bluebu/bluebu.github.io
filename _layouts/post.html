@@ -2,14 +2,33 @@
 layout: default
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<h1 class="title" itemprop="name headline">{{ page.title }}</h1>
+<div class="info">
+   <!--  <i class="icon-folder-open"></i> <%= link_to(@category.name, "/cat/#{@category.abbrev}", title: "查看#{@category.name}分类")%> -->
+     &nbsp;&nbsp;
+     <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>
+    <div class="pull-right">
+      {{ include jiathis.html }}
+    </div>
+        
+</div>
+<hr/>
+<p>
+<span class="label label-info">Hello!</span>
+如果觉得不错的话，并且不吝转载时，请顺便添加上这篇文章的链接 <code>http://www.hi-ruby.com/{{ page.url }}</code>
+</p>
 
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-  </header>
-
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
+<div class="full_content post-content" itemprop="articleBody">
+  {{ content }}
+</div>
 
 </article>
+
+<div class="comments">
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1511843" async=""></script>
+<!-- UY END -->
+</div>
+
+
