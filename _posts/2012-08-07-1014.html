@@ -1,0 +1,23 @@
+---
+layout: post
+title: Rails carrierwave上传图片无损压缩
+date: '2012-08-07T05:04:31+00:00'
+permalink: "/posts/1014"
+---
+
+<p>Google best-practices 上建议对JPEG和PNG文件进行lossless compression，尽可能的减小图片大小</p><p>上传图片，对于是再寻常不过的需求了，之前的项目说实话并不太注重图片，上传时候只是限制最大的width &amp; height， 并没有进行压缩，最近老外总提这事，只好做了</p><p>具体做法：</p><p>1、由于使用<a title="piet" target="_blank" href="https://github.com/albertbellonch/piet">piet</a>进行无损压缩，需要事先安装好 <a target="_blank" href="http://optipng.sourceforge.net/">optipng</a> 和 <a target="_blank" href="http://freecode.com/projects/jpegoptim">jpegoptim</a>, 这两个包是用来对png和jpg图片进行压缩的主力，piet则是在此基础上封装出的ruby套件.</p><p>ubuntu:<br /></p><pre class="brush:bash;toolbar:false;">sudo apt-get install optipng jpegoptim</pre><p>centos: 比较麻烦，请看下面两篇文章：</p><p> &nbsp; &nbsp;<a href="http://www.hi-ruby.com/articles/1016" target="_blank" title="Centos 6.2 安装optipng">Centos 6.2 安装optipng</a></p><p> &nbsp; &nbsp;<a href="http://www.hi-ruby.com/articles/1017" target="_blank" title="Centos 6.2 安装  jpegoptim">Centos 6.2 安装 &nbsp;jpegoptim</a></p><p>2、之前上传使用的是<a target="_self" href="https://github.com/jnicklas/carrierwave">carrierwave</a>， 这次添加无损压缩使用的是 <a title="piet" target="_blank" href="https://github.com/albertbellonch/piet">piet</a><br /></p><pre class="brush:ruby;toolbar:false;"># 文件和图片处理
+gem 'carrierwave'
+gem 'mini_magick'
+# 无损压缩
+gem 'piet'</pre><p>3、修改 carrierwave uploader</p><pre class="brush:ruby;toolbar:false;"># encoding: utf-8
+class ImageUploader &lt; CarrierWave::Uploader::Base
+         
+  include CarrierWave::MiniMagick
+  include CarrierWave::MimeTypes
+  include Piet::CarrierWaveExtension
+           
+  process :optimize
+         
+  # xxxxxxx
+         
+end</pre><p>4、结果</p><p>发布后，经测试 同一个jpg图片，之前上传后的大小是38KB， 无损压缩之后的大小为8KB, 效果还是比较明显的，节省掉带宽，就相当于省下钱了，这么想想，还是很值得的。</p><p><br /></p><p>对于没有用过carrierwave的开发者，可以去以下地址浏览 <a target="_blank" href="http://railscasts-china.com/episodes/9-file-uploading-by-carrierwave">http://railscasts-china.com/episodes/9-file-uploading-by-carrierwave</a><br /></p><p><br /></p><p><br /></p><p><br /></p>

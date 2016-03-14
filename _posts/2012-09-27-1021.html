@@ -1,0 +1,13 @@
+---
+layout: post
+title: sftp配置文件
+date: '2012-09-27T08:02:57+00:00'
+permalink: "/posts/1021"
+---
+
+<p>最近要给前端配sftp， 记录下，以防忘掉</p><p>修改 /etc/ssh/sshd_config 文件</p><p><br /></p><pre class="brush:bash;toolbar:false;">#Subsystem      sftp    /usr/libexec/openssh/sftp-server
+Subsystem sftp internal-sftp
+   
+Match Group sftp
+    ChrootDirectory /home/%u/ftp
+    ForceCommand internal-sftp</pre><p>目录的权限设定有两个要点：</p><p>　　1、由ChrootDirectory指定的目录开始一直往上到系统根目录为止的目录拥有者都只能是root<br />　　2、由ChrootDirectory指定的目录开始一直往上到系统根目录为止都不可以具有群组写入权限</p><p><br /></p><p><br /></p><p>参考文章：</p><p><a href="http://www.mike.org.cn/articles/centos-sftp-chroot/">http://www.mike.org.cn/articles/centos-sftp-chroot/</a> &nbsp;<br /></p>

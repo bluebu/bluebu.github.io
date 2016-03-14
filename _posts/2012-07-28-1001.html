@@ -1,0 +1,7 @@
+---
+layout: post
+title: "将Rails项目中文件默认编码设为UTF-8"
+date: '2012-07-28T17:49:56+00:00'
+permalink: "/posts/1001"
+---
+<p>ruby升级到1.9后， 需要在含有UTF-8字符（）的文件上方添加一句:</p><p>#coding: <span class="wp_keywordlink_affiliate"><a href="http://www.hi-ruby.com/?tag=utf-8" title="查看 utf-8 的全部文章" target="_blank">utf-8</a></span></p><p>文件少还可以，要是项目大一些就很头疼了，而且也不像ruby的风格，其实，在环境变量中声明一下RUBYOPT就可以了</p><p><code>export RUBYOPT=-Ku</code></p><p>这样每次运行ruby 都会带上 -Ku参数</p><p><br /></p>

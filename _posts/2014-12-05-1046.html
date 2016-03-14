@@ -1,0 +1,28 @@
+---
+layout: post
+title: Newrelic插件使用(一) -- Nginx监控
+date: '2014-12-05T10:29:39+00:00'
+permalink: "/posts/1046"
+---
+
+<blockquote><p><a title="nginx-nr-agent" href="http://newrelic.com/plugins/nginx-inc/13" target="_blank" data-mce-href="http://newrelic.com/plugins/nginx-inc/13" style="font-size:18px;text-decoration:underline;"><span style="font-size:16px;">nginx-nr-agent</span></a><span style="font-size:16px;">， 为Nginx官方提供的NewRelic监控插件，可以很方便的对你的Nginx进行监控<br /></span></p><p><span style="font-size:16px;">本文对</span><a title="nginx-nr-agent" href="http://newrelic.com/plugins/nginx-inc/13" target="_blank" data-mce-href="http://newrelic.com/plugins/nginx-inc/13" style="font-size:18px;text-decoration:underline;"><span style="font-size:16px;">nginx-nr-agent</span></a><span style="font-size:16px;">的安装做一个概述</span></p></blockquote><p><strong>Demo环境:</strong></p><ol><li><p>Nginx</p></li><li><p>一个NewRelic账号</p></li><li><p>本文以 Ubuntu Server 11.04 为例</p></li></ol><p><strong>安装步骤</strong></p><ol style="list-style-type:decimal;"><li><p>安装<a title="nginx-nr-agent" href="http://newrelic.com/plugins/nginx-inc/13" target="_blank" data-mce-href="http://newrelic.com/plugins/nginx-inc/13">nginx-nr-agent</a></p></li><li><p>开启Nginx的stub_status</p></li><li><p>修改<a title="nginx-nr-agent" href="http://newrelic.com/plugins/nginx-inc/13" target="_blank" data-mce-href="http://newrelic.com/plugins/nginx-inc/13">nginx-nr-agent</a>配置文件</p></li><li><p>启动nginx-nr-agent服务</p></li></ol><p>安装细节:</p><p><strong>1. 安装</strong><strong><a title="nginx-nr-agent" href="http://newrelic.com/plugins/nginx-inc/13" target="_blank" data-mce-href="http://newrelic.com/plugins/nginx-inc/13">nginx-nr-agent</a></strong></p><p>1.1 添加key<br /></p><pre class="brush:bash;toolbar:false;">wget -O- http://nginx.org/keys/nginx_signing.key | apt-key add -</pre><p>1.2 添加以下源路径到/etc/apt/sources.lit，注意trusty指的是Ubuntu Server的版本，适当进行修改</p><pre class="brush:bash;toolbar:false;">deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx
+deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx</pre><p>1.3 安装</p><pre class="brush:bash;toolbar:false;">apt-get update
+apt-get install nginx-nr-agent</pre><p><strong>2. 开启Nginx的stub_status</strong><br /></p><p>修改你的Nginx配置文件，添加以下配置:</p><pre class="brush:bash;toolbar:false;">location /nginx_stub_status {
+    stub_status on;
+    access_log  off;
+    allow 192.168.1.0/24;
+    allow 127.0.0.1;
+    deny all;
+}</pre><p>让我们测试是否生效:</p><pre class="brush:bash;toolbar:false;">nginx -s reload
+curl http://127.0.0.1/nginx_stub_status
+        
+# 正确的Output:
+Active connections: 10 
+server accepts handled requests
+ 145118 145118 142466 
+Reading: 0 Writing: 10 Waiting: 0</pre><p><strong>3. 修改配置文件</strong> /etc/nginx-nr-agent/nginx-nr-agent.ini, 主要修改两处:</p><p>3.1 newrelic_license_key, 置换成自己的key<br />3.2 添加data sources, 一个agent是可以监控多个源的</p><pre class="brush:bash;toolbar:false;">[source1]
+name=dev01
+url=http://127.0.0.1/nginx_stub_status
+[source2]
+name=dev02
+url=http://SomeIP/nginx_stub_status</pre><p>4. 启动nginx-nr-agent服务</p><pre class="brush:bash;toolbar:false;">service nginx-nr-agent start</pre><hr /><p>稍等片刻应该可以在Newrelic上看到你的Nginx信息了<br /></p><p><img src="/upload/ueditor/images/000/000/007/original/51c71727-77c3-4d04-868c-8bff9c2c68d9.png" style="float:none;" /></p><p><img src="/upload/ueditor/images/000/000/008/original/aae54c6b-919d-4d27-9ee2-6b8cb5423f8e.png" style="float:none;" /></p><p>面注明(N+)的是NGINX Plus土豪版的,可以查看更多的监控信息</p><ul><li><p>Upstreams (all upstream servers breakdown by state, upstream connections, bandwidth usage, response rate breakdown by HTTP status code, health checks status)</p></li><li><p>Virtual servers (request rate, response rate breakdown by HTTP status code, bandwidth usage)</p></li><li><p>Caches (cached/uncached response rate breakdown by cache status, traffic usage, on-disk cache storage, hit ratios)</p></li></ul>

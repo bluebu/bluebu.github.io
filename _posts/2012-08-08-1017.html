@@ -1,0 +1,10 @@
+---
+layout: post
+title: Centos 6.2 安装  jpegoptim
+date: '2012-08-08T02:25:37+00:00'
+permalink: "/posts/1017"
+---
+
+<p>1、安装libjpeg</p><pre class="brush:bash;toolbar:false;">yum install -y libjpeg libjpeg-devel</pre><p>2、下载源码</p><p> &nbsp; &nbsp;<a target="_blank" href="http://freecode.com/projects/jpegoptim"></a><a href="http://freecode.com/projects/jpegoptim">http://freecode.com/projects/jpegoptim</a></p><p> &nbsp; &nbsp;<a target="_blank" href="http://www.kokkonen.net/tjko/projects.html">http://www.kokkonen.net/tjko/projects.html</a><br /></p><p>3、解压</p><pre class="brush:bash;toolbar:false;">tar -zxvf jpegoptim-1.2.4.tar.gz</pre><p>4、编译安装</p><pre class="brush:bash;toolbar:false;">cd jpegoptim-1.2.4
+./configure
+make &amp;&amp; make install</pre><p>ubuntu 就灰常简单了， 直接 apt-get install <code class="bash plain">jpegoptim</code> 就行了<br /></p>

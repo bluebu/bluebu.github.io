@@ -1,0 +1,28 @@
+---
+layout: post
+title: git新建本地分支自动与远程分支关联
+date: '2012-10-09T10:57:38+00:00'
+permalink: "/posts/1033"
+---
+
+<p>今天经过老大的指点，终于一解困惑我多年的这个问题：</p><p>使用git时候，本地新建分支， push到remote上去后，再次pull下来，会报以下提示：</p><pre class="brush:bash;toolbar:false;">You asked me to pull without telling me which branch you
+want to merge with, and 'branch.production.merge' in
+your configuration file does not tell me, either. Please
+specify which branch you want to use on the command line and
+try again (e.g. 'git pull &lt;repository&gt; &lt;refspec&gt;').
+See git-pull(1) for details.
+ 
+If you often merge with the same branch, you may want to
+use something like the following in your configuration file:
+ 
+    [branch "production"]
+    remote = &lt;nickname&gt;
+    merge = &lt;remote-ref&gt;
+ 
+    [remote "&lt;nickname&gt;"]
+    url = &lt;url&gt;
+    fetch = &lt;refspec&gt;
+ 
+See git-config(1) for details.</pre><p>之前都是按照提示手动配置的，一直在寻找利用口令直接配置的方法，经过老大指点，问题轻松解决：</p><pre class="brush:bash;toolbar:false;">git branch --set-upstream production origin/production</pre><p>结果是在项目目录下 .git/config中添加如下内容，也就是之前我一直手动添加的代码：</p><pre class="brush:bash;toolbar:false;">[branch "production"]
+        remote = origin
+        merge = refs/heads/production</pre><p>man git &nbsp;branch如下：</p><pre class="brush:bash;toolbar:false;">When a local branch is started off a remote-tracking branch, git sets up the branch so that git pull will appropriately merge from the remote-tracking branch. This behavior may be changed via the global branch.autosetupmerge configuration flag. That setting can be overridden by using the --track and --no-track options, and changed later using git branch --set-upstream.</pre><p><br /></p>

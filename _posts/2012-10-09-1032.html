@@ -1,0 +1,12 @@
+---
+layout: post
+title: "设置(更改)Mysql 自增ID的起始值"
+date: '2012-10-09T09:24:40+00:00'
+permalink: "/posts/1032"
+---
+
+<p><span style="font-size:14px;">许多时候希望table中数据的id不要从1开始，像qq， id从10000开始</span></p><p><span style="font-size:14px;">代码如下：</span></p><pre class="brush:bash;toolbar:false;">alter table users AUTO_INCREMENT=10000;</pre><p><span style="font-size:14px;">而且该语句也适用于修改现有表的id上， 比如大批量删除数据后，想id从654321退回123456开始</span></p><pre class="brush:bash;toolbar:false;">alter table users AUTO_INCREMENT=123456;</pre><p><span style="font-size:14px;">但是经过实际测试， 单机的Mysql没有问题， Mysql Cluster下是无效的，可能在主键上的机制，还是有所不同，有时间研究一下</span></p><p><br /></p><p><span style="font-size:14px;">在Rails migration中的写法如下：</span></p><pre class="brush:ruby;toolbar:false;">create_table :articles, :options =&gt; 'AUTO_INCREMENT = 1001' do |t|
+   
+# xxx todo
+   
+end</pre><p><br /></p><p><br /></p>

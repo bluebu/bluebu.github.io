@@ -1,0 +1,30 @@
+---
+layout: post
+title: gitconfig配置文件
+date: '2012-09-29T04:47:21+00:00'
+permalink: "/posts/1022"
+---
+
+<pre class="brush:bash;toolbar:false;">[color]
+   diff = auto
+   status = auto
+   branch = auto
+ 
+[alias]
+   st = status
+   rb = svn rebase
+   ci = commit -a
+   co = checkout
+   br = branch
+   lol = log --pretty=oneline --abbrev-commit --graph --decorate
+ 
+[push]
+   default = matching
+ 
+[receive]
+   denyCurrentBranch = ignore
+[user]
+   name = bluebu
+   email = bluebuwang@gmail.com
+[core]
+   excludesfile = ~/.gitignore</pre><p><br /></p>

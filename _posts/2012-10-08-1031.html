@@ -1,0 +1,49 @@
+---
+layout: post
+title: iptables启动脚本
+date: '2012-10-08T03:11:05+00:00'
+permalink: "/posts/1031"
+---
+
+<p>iptables 启动脚本</p><pre class="brush:bash;toolbar:false;">#!/bin/bash
+  
+case "$1" in
+  
+start)
+  
+#Policy
+iptables -P INPUT DROP
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
+  
+#Rules
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+iptables -A INPUT -m state --state INVALID -j DROP
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -p icmp -j ACCEPT
+#Client
+iptables -A INPUT -i eth0 -s 222.222.222.222 -j ACCEPT
+iptables -A INPUT -i eth0 -s 192.168.1.0/24 -j ACCEPT
+iptables -A INPUT -i eth0 -s 172.10.0.0/24 -j ACCEPT
+  
+#HTTP
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+#SSH
+iptables -A INPUT -i eth0 -p tcp --dport 62222 -j ACCEPT
+#MySQL
+iptables -A INPUT -s 172.10.0.0/24 -p tcp --dport 3306 -j ACCEPT
+  
+;;
+  
+stop)
+  
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -F
+  
+;;
+  
+esac</pre><p><br /></p>

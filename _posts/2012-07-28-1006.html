@@ -1,0 +1,10 @@
+---
+layout: post
+title: rails 3路由via，指定多种http请求方式（Hi-Ruby.com）
+date: '2012-07-28T18:05:50+00:00'
+permalink: "/posts/1006"
+---
+
+<p>需求：</p><p>statuses/destroy/:id</p><p>根据ID删除微博消息</p><p>HTTP请求方式：POST/DELETE</p><pre>match 'statuses/destroy/:id'
+=&gt; 'statuses#destroy', :via =&gt; [:post, :delete]
+</pre><p><br /></p>

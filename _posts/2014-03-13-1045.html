@@ -1,0 +1,36 @@
+---
+layout: post
+title: Ruby 2.1下的define_method的方法不再是public
+date: '2014-03-13T18:04:26+00:00'
+permalink: "/posts/1045"
+---
+
+<p>最近项目打算从1.9.3升级到2.1.1， 目前线上同时跑着1.9.3和2.1.1，但是发现<code class="ruby keyword">define_method</code>在2.1.1下面生成的方法不再是public，而是根据上下文来判断.</p><p>比如以下代码:</p><pre class="brush:ruby;toolbar:false;">class A
+        
+  private
+        
+  define_method :foo do
+    puts 'foo from A'
+  end
+        
+end
+    
+class B
+      
+  # private 注释掉private
+  define_method :foo do
+    puts 'foo from B'
+  end
+      
+end</pre><pre class="brush:as3;toolbar:false;">A.new.foo
+     
+1.9.3 #=&gt; foo from A
+2.0.0 #=&gt; foo from A
+2.1.1 #=&gt; NoMethodError: private method `foo' called for #&lt;A:0x007fe2ca13a9c0&gt;
+    
+    
+B.new.foo
+     
+1.9.3 #=&gt; foo from B
+2.0.0 #=&gt; foo from B
+2.1.1 #=&gt; foo from B</pre><p><br /></p><p><br /></p><p><br /></p><p><br /></p>

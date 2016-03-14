@@ -1,0 +1,56 @@
+---
+layout: post
+title: ueditor 代码高亮 - 更换主题并解决无法换行的问题
+date: '2012-08-06T04:17:04+00:00'
+permalink: "/posts/1013"
+---
+
+<p>之前使用ueditor的默认代码高亮的样式，但是BlueBu比较喜欢深色系，所以希望换个样式，而之前使用wordpress时候，记得是可以切换主题的.</p><p>ueditor third目录里有两个可疑插件codemirror2.15 &amp; <strong>SyntaxHighlighter</strong></p><p>放狗搜之，原来codemirror是用来做code editing的，我只是想要code view，所以用的不是这个，而且导入包的时候是导入SyntaxHighlighter的，于是去官网 <a target="_blank" href="http://alexgorbatchev.com/SyntaxHighlighter/">http://alexgorbatchev.com/SyntaxHighlighter/</a><br /></p><p>下载源码： <a href="http://alexgorbatchev.com/SyntaxHighlighter/download/download.php?sh_current">http://alexgorbatchev.com/SyntaxHighlighter/download/download.php?sh_current</a> </p><p><br /></p><p>scripts 里面包含各种语言的识别， 调用也非常简单，就是根据pre 里面 class来判断code是什么语言，这里，我直接用ueditor自带的了，如果需要自定义的话，可以看看官方文档</p><p><br /></p><p>接下来就是更换主题了，styles里面有各种主题的css，但是hi-ruby既然用Rails做的，所以选择使用scss来做</p><p>1、把compass目录中的scss文件copy到 app/assets/stylesheets/syntaxhighlighter中</p><p>2、新建app/assets/stylesheets/syntaxhighlighter.css.scss文件,import要使用的scss文件, 其中第一句是用来修复无法换行的问题<br /></p><pre class="brush:css;toolbar:false;">.syntaxhighlighter table td.code .container, .syntaxhighlighter table td.code .container:before, .syntaxhighlighter table td.code .container:after {
+  display: block;
+}
+@import "syntaxhighlighter/shCore.scss";
+@import "syntaxhighlighter/shThemeEmacs.scss"</pre><p>3、将syntaxhighlighter.css.scss添加到预编译目录中</p><pre class="brush:ruby;toolbar:false;">config.assets.precompile += ['admin.js', 'admin.css', "syntaxhighlighter.css"]</pre><p>4、修复无法换行的问题，修改shCore.scss文件， 注释掉height: auto &nbsp;!important; <br /></p><pre class="brush:css;toolbar:false;">.syntaxhighlighter {
+    a,
+    div,
+    code,
+    table,
+    table td,
+    table tr,
+    table tbody,
+    table thead,
+    table caption,
+    textarea {
+        @include round_corners(0);
+              
+        background: none !important;
+        border: 0 !important;
+        bottom: auto !important;
+        float: none !important;
+        // 注释掉 height: auto  !important; 
+        left: auto !important;
+        line-height: 1.1em !important;
+        margin: 0 !important;
+        outline: 0 !important;
+        overflow: visible !important;
+        padding: 0 !important;
+        position: static !important;
+        right: auto !important;
+        text-align: left !important;
+        top: auto !important;
+        vertical-align: baseline !important;
+        width: auto !important;
+        box-sizing: content-box !important;
+        font: {
+            family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+            weight: normal !important;
+            style: normal !important;
+            size: 1em !important;
+        }
+        min: {
+            // For IE8, FF &amp; WebKit
+            height: inherit !important;
+            // For IE7
+            height: auto !important;
+        }
+    }
+}</pre><p><br /></p><p><br /></p><p><br /></p>

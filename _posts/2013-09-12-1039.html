@@ -1,0 +1,9 @@
+---
+layout: post
+title: Rails4下启动Guard + Spork报错ERROR - Guard::Spork failed to achieve its <start>
+date: '2013-09-12T16:00:13+00:00'
+permalink: "/posts/1039"
+---
+
+<section class="page-body col-md-9">Rails4下启动Guard + Spork时候会报错 &nbsp; &nbsp; &nbsp; &nbsp;<br /><div class="highlight"><pre class="brush:bash;toolbar:false;">ERROR - Guard::Spork failed to achieve its &lt;start&gt;, exception was:
+NoMethodError: private method `raise' called for nil:NilClass</pre>临时解决办法:<br /></div><div class="highlight"><pre class="brush:ruby;toolbar:false;">gem 'spork-rails', github: 'sporkrb/spork-rails'</pre> &nbsp; &nbsp;</div></section>

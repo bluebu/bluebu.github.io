@@ -1,0 +1,29 @@
+---
+layout: post
+title: "巧用md5sum 查看文件的MD5值(Hi-Ruby.com)"
+date: '2012-07-28T18:03:16+00:00'
+permalink: "/posts/1005"
+---
+
+<p><span class="wp_keywordlink_affiliate"><a href="http://www.hi-ruby.com/?tag=md5" title="查看 md5 的全部文章" target="_blank">md5</a></span>sum口令 可以查看文件的32位MD5值，通常我们可以通过比对MD5值来校验文件是否被植入木马、病毒等等使用起来非常简单，就是在控制台中输入 <span class="wp_keywordlink_affiliate"><a href="http://www.hi-ruby.com/?tag=md5" title="查看 md5 的全部文章" target="_blank">md5</a></span>sum + 文件路径，控制台会输出这个文件的<span class="wp_keywordlink_affiliate"><a href="http://www.hi-ruby.com/?tag=md5" title="查看 md5 的全部文章" target="_blank">md5</a></span>值。<br />例如：</p><pre class="brush:bash;title:&#39;.bashrc&#39;;first-line:1;pad-line-numbers:true;highlight:null;collapse:false;toolbar:false;"> md5sum actionmailer-3.0.7.gem
+81cabaef6950d715521e2cac9398b377  actionmailer-3.0.7.gem
+</pre><p><span id="more-389"></span><br />也可以同时计算多个文件的md5值</p><pre class="brush:bash;title:&#39;.bashrc&#39;;first-line:1;pad-line-numbers:true;highlight:null;collapse:false;toolbar:false;"> md5sum *
+
+4b76a14a67b2ac8220298c6d3b44792c  actionmailer-2.3.11.gem
+6e4d123b144ae091be91ac761bf6087f  actionmailer-2.3.8.gem
+2c5b52d156c3667b7e34c5bb567645de  actionmailer-3.0.3.gem
+dd675260847b9284f80028facfef4b81  actionmailer-3.0.5.gem
+dc35ab3754870ccef49dc8d1a723bd3b  actionmailer-3.0.6.gem
+81cabaef6950d715521e2cac9398b377  actionmailer-3.0.7.gem
+</pre><p>我们可以把这些计算出来的md5值记录到一个文本文件中，通过这个文本文件来查找出其中有哪些文件发生了变动，当然这种校验就需要使用–check参数了</p><pre class="brush:bash;title:&#39;.bashrc&#39;;first-line:1;pad-line-numbers:true;highlight:null;collapse:false;toolbar:false;"> md5sum file1 file2 file3 &gt; md5list
+md5sum --check md5list
+file1: 确定
+file2: 确定
+file3: 确定
+</pre><p>如果你的系统语言英文， 显示的是file1:OK<br />当其中某文件发生变动之后，它的md5值也会发生变动，我们通过已有的md5list文件可以查找出哪些文件发生了变动，如果不完全匹配，则会发出警告</p><pre class="brush:bash;title:&#39;.bashrc&#39;;first-line:1;pad-line-numbers:true;highlight:null;collapse:false;toolbar:false;"> echo 'www.hi-ruby.com' &gt; file1
+md5sum --check md5list
+file1: 失败
+file2: 确定
+file3: 确定
+md5sum: 警告：1/3 生成的校验和不匹配
+</pre><p><br /></p>

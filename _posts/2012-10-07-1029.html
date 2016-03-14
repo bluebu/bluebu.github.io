@@ -1,0 +1,38 @@
+---
+layout: post
+title: Ubuntu+Nginx+PHP运行环境快速搭建
+date: '2012-10-07T14:18:04+00:00'
+permalink: "/posts/1029"
+---
+
+<p>重装了系统之后，今天发现php运行环境没有了，又特别急，放狗搜集多个配置，都太专业了，什么mysql, memcache的，而我只是想运行一下朋友的php项目，连mysql都不需要，配置如下</p><p>安装Nginx 略</p><p>安装PHP</p><pre class="brush:bash;toolbar:false;">sudo apt-get install php5-cli php5-cgi php5-fpm php5-mcryp</pre><p>修改Nginx配置</p><p><br /></p><pre class="brush:bash;toolbar:false;">server {
+        #listen   80; ## listen for ipv4; this line is default and implied
+        #listen   [::]:80 default ipv6only=on; ## listen for ipv6
+ 
+        #root /usr/share/nginx/www;
+        root /path/to/your/project;
+ 
+        index index.html index.htm index.php;
+ 
+        # Make site accessible from http://localhost/
+        server_name localhost;
+ 
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to index.html
+                try_files $uri $uri/ /index.html;
+                # Uncomment to enable naxsi on this location
+                # include /etc/nginx/naxsi.rules
+        }
+        location ~ \.php$ {
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        #       # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+        #
+        #       # With php5-cgi alone:
+                fastcgi_pass 127.0.0.1:9000;
+        #       # With php5-fpm:
+        #       fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                include fastcgi_params;
+        }
+}</pre><p><br /></p>

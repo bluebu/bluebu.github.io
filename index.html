@@ -2,8 +2,6 @@
 layout: default
 ---
 
-
-
 <!-- <% if @title.present? %>
 <ul class="breadcrumb">
   <li><a href="/">首页</a> <span class="divider">/</span></li>
@@ -20,7 +18,7 @@ layout: default
         <% end -%> -->
     </h2>
     <div class="content">
-      {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+      {{ post.excerpt | strip_html |  truncate: 225, '...' }}
       <a target="_blank" href="{{ post.url }}" title="查看更多">查看更多</a>
     </div>
   </li>

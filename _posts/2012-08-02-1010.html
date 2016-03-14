@@ -1,0 +1,13 @@
+---
+layout: post
+title: Rails下清除session
+date: '2012-08-02T10:13:52+00:00'
+permalink: "/posts/1010"
+---
+
+<p>不知道从哪里看的， 记得以前删除session &amp; cookies就是直接赋值为nil</p><p>即： </p><pre class="brush:ruby;toolbar:false;">session, cookies = nil, nil</pre><p>但是，Rails 3.0 实际项目中发现有时候好使，有时候不好使。</p><p>Rails 3.2 的项目就不好使了， debug进去，发现session虽然为nil，但是request中还是有_xxx_session 的信息</p><p><br /></p><p>于是查了下api，发现原来已经有重置session的功能，但是注释中还有个TODO， 可能以后要有变动</p><p>重置session的方法灰常简单， 就是在action中调用 reset_session 方法即可，附上reset_session的源码，注意TODO</p><p><br /></p><pre class="brush:ruby;toolbar:false;"># File actionpack/lib/action_dispatch/http/request.rb, line 209
+def reset_session
+  session.destroy if session &amp;&amp; session.respond_to?(:destroy)
+  self.session = {}
+  @env['action_dispatch.request.flash_hash'] = nil
+end</pre><p><br /></p><p><br /></p><p><br /></p>
