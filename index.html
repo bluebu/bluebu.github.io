@@ -2,22 +2,30 @@
 layout: default
 ---
 
-<div class="home">
 
-  <h1 class="page-heading">Posts</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+<!-- <% if @title.present? %>
+<ul class="breadcrumb">
+  <li><a href="/">首页</a> <span class="divider">/</span></li>
+  <li class="active"><%= @title %></li>
+</ul>
+<% end -%> -->
+<ul class="articles">
+  {% for post in site.posts %}
+  <li>
+    <h2>
+        <a class="post-link" href="{{ post.url }}" target="_blank" title="{{ post.title }}">{{ post.title }}</a>
+        <!-- <% if article.original %>
+        <span class="label">原创</span>
+        <% end -%> -->
+    </h2>
+    <div class="content">
+      {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+      <a target="_blank" href="{{ post.url }}" title="查看更多">查看更多</a>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+<!-- <div>
+<%= paginate @articles, theme: "bootstrap" %>
+</div> -->
