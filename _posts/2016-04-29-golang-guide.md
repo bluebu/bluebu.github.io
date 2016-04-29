@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Golang资料汇总
-date: '2016-04-29T15:29:39'
+date: '2016-04-29T01:29:39'
 permalink: "/posts/golang-guide"
 ---
 
