@@ -2,12 +2,10 @@
 layout: default
 ---
 
-<!-- <% if @title.present? %>
 <ul class="breadcrumb">
   <li><a href="/">首页</a> <span class="divider">/</span></li>
-  <li class="active"><%= @title %></li>
+  <li class="active">第{{paginator.page}}页</li>
 </ul>
-<% end -%> -->
 <ul class="articles">
   {% for post in paginator.posts %}
   <li>
