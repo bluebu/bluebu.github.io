@@ -12,9 +12,9 @@ categories: [golang, sample]
 
 #### 1. 安装Go
 
-{% highlight bash %}
+```shell
 brew install go
-{% endhighlight %}
+```
 
 本文写作时go版本为1.6, 其余没什么可说的, 略过
 
@@ -22,10 +22,10 @@ brew install go
 
 将以下代码添加到 .bashrc 或者 .zshrc
 
-{% highlight bash %}
+```shell
 export GOPATH=/home/bluebu/go
 export PATH=$PATH:$GOPATH/bin
-{% endhighlight %}
+```
 
 注: GOPATH即我们以后的workspace, 建议在home目录下创建该目录
 
