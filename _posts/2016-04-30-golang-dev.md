@@ -3,7 +3,7 @@ layout: post
 title: Mac下Golang开发环境搭建
 date: '2016-04-29T10:00:39+08:00'
 permalink: "/posts/golang-dev"
-categories: [golang, sample]
+categories: [golang]
 ---
 
 话说工欲善其事, 必先利其器, 要想写一手好代码怎能不需要一个好用的开发环境?

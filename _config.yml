@@ -30,22 +30,32 @@ gems:
   - jekyll-paginate
 
 sitemap:
-    file: "/sitemap.xml"
-    exclude:
-        - "/atom.xml"
-        - "/feed.xml"
-        - "/feed/index.xml"
-    include_posts:
-        - "/index.html"
-    change_frequency_name: "change_frequency"
-    priority_name: "priority"
+  file: "/sitemap.xml"
+  exclude:
+      - "/atom.xml"
+      - "/feed.xml"
+      - "/feed/index.xml"
+  include_posts:
+      - "/index.html"
+  change_frequency_name: "change_frequency"
+  priority_name: "priority"
+
+# # collections
+# collections:
+#   - categories
 
 
 defaults:
   -
     scope:
-      path: "" # an empty string here means all files in the project
+      path: "_posts" # an empty string here means all files in the project
       type: "posts" # previously `post` in Jekyll 2.2.
     values:
       layout: "default"
       excerpt_separator: <!--more-->
+  # -
+  #   scope:
+  #     path: "categories" # an empty string here means all files in the project
+  #     type: "categories" # previously `post` in Jekyll 2.2.
+  #   values:
+  #     layout: "default"

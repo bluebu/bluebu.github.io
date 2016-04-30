@@ -3,6 +3,7 @@ layout: post
 title: Golang资料汇总
 date: '2016-04-29T01:29:39'
 permalink: "/posts/golang-guide"
+categories: [golang]
 ---
 
 收集的一些关于Golang的学习资料, 汇总如下:
