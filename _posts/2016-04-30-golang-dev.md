@@ -3,6 +3,7 @@ layout: post
 title: Mac下Golang开发环境搭建
 date: '2016-04-29T10:00:39+08:00'
 permalink: "/posts/golang-dev"
+categories: [golang, sample]
 ---
 
 话说工欲善其事, 必先利其器, 要想写一手好代码怎能不需要一个好用的开发环境?
@@ -11,9 +12,9 @@ permalink: "/posts/golang-dev"
 
 #### 1. 安装Go
 
-```
+{% highlight bash %}
 brew install go
-```
+{% endhighlight %}
 
 本文写作时go版本为1.6, 其余没什么可说的, 略过
 
@@ -21,10 +22,10 @@ brew install go
 
 将以下代码添加到 .bashrc 或者 .zshrc
 
-```
+{% highlight bash %}
 export GOPATH=/home/bluebu/go
 export PATH=$PATH:$GOPATH/bin
-```
+{% endhighlight %}
 
 注: GOPATH即我们以后的workspace, 建议在home目录下创建该目录
 

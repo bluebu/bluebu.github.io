@@ -5,6 +5,11 @@ layout: default
 <h1 class="title" itemprop="name headline">{{ page.title }}</h1>
 <div class="info">
    <!--  <i class="icon-folder-open"></i> <%= link_to(@category.name, "/cat/#{@category.abbrev}", title: "查看#{@category.name}分类")%> -->
+
+    <i class="icon-folder-open"></i>
+    {% for category in page.categories %}
+      <a href="#">{{ category}}</a>
+    {% endfor %}
      &nbsp;&nbsp;
      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>
     <div class="pull-right">
