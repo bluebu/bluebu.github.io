@@ -3,6 +3,7 @@ layout: post
 title: Rails 3.1.0.rc4报错execjs:Could not find a JavaScript runtime
 date: '2012-07-28T18:25:02+00:00'
 permalink: "/posts/1008"
+categories: [ruby]
 ---
 
 <p>ruby 1.9.2 下运行rails 3.1.0.rc4，报错Could not find a JavaScript runtime</p><p>其实解决办法在报错位置就可以看到，<a href="https://github.com/sstephenson/execjs" target="_blank" rel="nofollow">https://github.com/sstephenson/execjs</a></p><p>下面只是把解决办法贴出来，就是在系统里面安装一个js的运行环境：</p><div class="line alt1"><table><tbody><tr><td><code>1</code></td><td><code>sudo</code><code>apt-get </code><code>install</code><code>python-software-properties</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td><code>2</code></td><td><code>sudo</code><code>add-apt-repository ppa:jerome-etienne/neoip</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td><code>3</code></td><td><code>sudo</code><code>apt-get update</code></td></tr></tbody></table></div><table><tbody><tr><td><code>4</code></td><td><code>sudo</code><code>apt-get </code><code>install</code><code>nodejs</code></td></tr></tbody></table><p><br /></p>

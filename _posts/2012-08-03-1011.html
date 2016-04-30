@@ -3,6 +3,7 @@ layout: post
 title: linux 统计nginx log 固定时段某链接的pv值
 date: '2012-08-03T09:35:52+00:00'
 permalink: "/posts/1011"
+categories: [os]
 ---
 
 <p>最近统计nginx log，遇到一个需求统计nginx log某时段某个链接的pv，这里记录一下：</p><p>统计2012年7月17日 0点到4点之间 &quot;/index.html&quot; 的pv值， 代码如下<br /></p><p><br /></p><pre class="brush:bash;toolbar:false;">sudo zcat /var/log/nginx/access.log-20120718.gz | sed -n '/17\/Jul\/2012:00/,/17\/Jul\/2012:03/p' | grep "GET /index.html" | wc -l</pre><p><br /></p>

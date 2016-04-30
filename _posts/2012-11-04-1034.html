@@ -3,6 +3,7 @@ layout: post
 title: Ubuntu11.04下Multi-User安装RVM环境变量无效
 date: '2012-11-04T12:50:49+00:00'
 permalink: "/posts/1034"
+categories: [os]
 ---
 
 <p>最近在Ubuntu11.04下Multi-User安装RVM， 发现登录后环境变量无效，必须手动执行source /etc/profile才生效.</p><p>其实问题是 /etc/profile 中只能执行non-interactive shell， 而/etc/profile.d/rvm.sh 中使用了<span class="comment-copy">functions 和 aliases, 于是即使执行了，也没有生效.</span><br /></p><p>直接上代码：</p><pre class="brush:bash;toolbar:false;">echo '[[ -s "/etc/profile.d/rvm.sh" ]] &amp;&amp; . "/etc/profile.d/rvm.sh" # Load RVM function' &gt;&gt; ~/.bashrc</pre><p><br /></p>

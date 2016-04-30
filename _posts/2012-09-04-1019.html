@@ -3,6 +3,7 @@ layout: post
 title: ubuntu server下手动指定dns
 date: '2012-09-04T02:58:04+00:00'
 permalink: "/posts/1019"
+categories: [os]
 ---
 
 <p>由于公司内外网要通过dns来切换，之前一直直接修改/etc/resolv.conf文件去指定dns，虽然这样修改是即时生效的，但是发现dns经常性的又变回原有的dns，导致访问内网环境很不方便，于是上网搜了一下，原理非常简单，就是手动修改下dhcp client的配置文件，方法记录下来，以防忘记<br /></p><p><tt>修改/etc/dhcp/dhclient.conf</tt></p><p><tt>在顶部添加</tt></p><pre class="brush:bash;toolbar:false;">supersede domain-name-servers 192.168.1.1</pre><p>然后重启网络服务 /etc/init.d/networking restart</p><p>可以发现/etc/resolv.conf中的nameserver 已经更新成指定的dns 192.168.1.1<br /></p><p><br /></p><p><br /></p><p><br /></p>

@@ -3,6 +3,7 @@ layout: post
 title: rails中文复数的问题pluralize
 date: '2012-07-28T18:00:37+00:00'
 permalink: "/posts/1004"
+categories: [ruby]
 ---
 
 <p>在国际化时候 &nbsp;经常出现调用<span class="wp_keywordlink_affiliate"><a href="http://www.hi-ruby.com/?tag=pluralize" title="查看 pluralize 的全部文章" target="_blank">pluralize</a></span>方法时候， rails会在中文后面加个s</p><p>比如 英文环境下 5 users 是正确的</p><p>但是转换到中文时候，则会出现 5个用户s &nbsp; 默认会在中文后面加个s</p><p>为了解决这个问题，可以编辑 config/initializers/inflections.rb 文件， 添加对中文的复数规则</p><pre class="brush:ruby;title:&#39;.bashrc&#39;;first-line:1;pad-line-numbers:true;highlight:null;collapse:false;toolbar:false;">ActiveSupport::Inflector.inflections do |inflect|

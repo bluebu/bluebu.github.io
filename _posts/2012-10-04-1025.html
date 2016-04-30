@@ -3,6 +3,7 @@ layout: post
 title: 'install nginx error: the HTTP rewrite module requires the PCRE library'
 date: '2012-10-04T04:18:26+00:00'
 permalink: "/posts/1025"
+categories: [os]
 ---
 
 <p>从源代码中安装nginx</p><p>1、运行./configure报错：</p><pre class="brush:bash;toolbar:false;">./configure: error: the HTTP rewrite module requires the PCRE library.</pre><p><br /></p><p>2、安装 libpcre3 libpcre3-dev</p><pre class="brush:bash;toolbar:false;">apt-get install libpcre3 libpcre3-dev</pre><p><br /></p><p>3、重新编译</p><pre class="brush:bash;toolbar:false;">make &amp;&amp; make install</pre><p><br /></p><p><br /></p>

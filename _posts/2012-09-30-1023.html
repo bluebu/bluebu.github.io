@@ -3,6 +3,7 @@ layout: post
 title: Shell配色方案PS1
 date: '2012-09-30T16:00:52+00:00'
 permalink: "/posts/1023"
+categories: [os]
 ---
 
 <p>不知怎么搞的，ubuntu shell之前的配色完全丢失，后来觉得gentoo默认的配色还不错，很简单，自己之前用的过于花哨，所以把gentoo的PS1 copy到本地， 在此基础上简单的加上了git 当前分支的信息， 特此记录下</p><pre class="brush:bash;toolbar:false;">export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\]:\w\[\e[01;31m\]$(__git_ps1)\[\e[01;34m\]\$\[\033[00m\] '</pre><p><br /></p><p><strong>附上google来的关于PS1变量的描述：</strong></p><p>PS1（是数字1而不是字母l），默认的特殊符号所代表的意义：<br />\d &nbsp; &nbsp;：代表日期，格式为weekday month date，例如：&quot;Mon Aug 1&quot;<br />\H ：完整的主机名称。例如：我的机器名称为：fc4.linux，则这个名称就是fc4.linux<br />\h ：仅取主机的第一个名字，如上例，则为fc4，.linux则被省略<br />\t ：显示时间为24小时格式，如：HH：MM：SS<br />\T ：显示时间为12小时格式<br />\A ：显示时间为24小时格式：HH：MM<br />\u ：当前用户的账号名称<br />\v ：BASH的版本信息<br />\w ：完整的工作目录名称。家目录会以 ~代替<br />\W ：利用basename取得工作目录名称，所以只会列出最后一个目录<br />\# ：下达的第几个命令<br />\$ ：提示字符，如果是root时，提示符为：# &nbsp; &nbsp;，普通用户则为：$<br /></p><p><br /></p><p>至于关于git的部分 可以参照<strong>/etc/bash_completion.d/git </strong>文件</p><p><br /></p><p><br /></p><p><br /></p>
