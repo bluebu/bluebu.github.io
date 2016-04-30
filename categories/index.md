@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 分类目录 Hi-ruby.com
+title: 分类存档
 permalink: "/categories/"
 ---
 

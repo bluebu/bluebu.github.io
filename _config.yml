@@ -48,14 +48,14 @@ sitemap:
 defaults:
   -
     scope:
-      path: "_posts" # an empty string here means all files in the project
+      path: "" # an empty string here means all files in the project
       type: "posts" # previously `post` in Jekyll 2.2.
     values:
       layout: "default"
       excerpt_separator: <!--more-->
-  # -
-  #   scope:
-  #     path: "categories" # an empty string here means all files in the project
-  #     type: "categories" # previously `post` in Jekyll 2.2.
-  #   values:
-  #     layout: "default"
+  -
+    scope:
+      path: "categories" # an empty string here means all files in the project
+      type: "pages" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "archive"
