@@ -15,7 +15,7 @@ permalink: "/categories/"
   {% for post in category.last %}
     <li>
       <a class="post-link" href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-      {{ post.date | date:"%d/%m/%Y"}}
+      <time style="float:right;">{{ post.date | date:"%Y-%m-%d"}}</time>
     </li>
   {% endfor %}
 </ul>
