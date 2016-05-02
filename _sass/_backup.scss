@@ -1,8 +1,8 @@
 body {
   background-color: #FFFFFF;
-  background-image: url("/images/grid-18px-masked.png");
+  background-image: url("/images/bg.png");
   background-position: 0 40px;
-  background-repeat: repeat-x;
+  background-repeat: repeat;
   padding-top: 82px;
   position: relative
 }
@@ -385,10 +385,7 @@ h6 {
 .page-header h1 {
   line-height: 1
 }
-ul, ol {
-  padding: 0;
-  margin: 0 0 9px 0;
-}
+
 ul ul, ul ol, ol ol, ol ul {
   margin-bottom: 0
 }
@@ -2578,6 +2575,11 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
   overflow: visible;
   margin-bottom: 18px
 }
+
+.navbar ul, .navbar ol {
+  padding: 0;
+  margin: 0 0 9px 0;
+}
 .navbar-inner {
   min-height: 40px;
   padding-left: 20px;
@@ -4494,7 +4496,9 @@ div.sidebar {
   margin-top: 10px
 }
 ul.articles {
-  list-style: none outside none
+  list-style: none outside none;
+  padding: 0;
+  margin: 0 0 10px 0;
 }
 ul.articles li {
   border-bottom: 1px dashed #CCCCCC;

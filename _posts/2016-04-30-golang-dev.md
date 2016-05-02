@@ -10,7 +10,7 @@ categories: [golang]
 
 本文用来记录第一次安装go环境遇到问题, 以防遗忘
 
-#### 1. 安装Go
+### 1. 安装Go
 
 ```shell
 brew install go
@@ -18,7 +18,7 @@ brew install go
 
 本文写作时go版本为1.6, 其余没什么可说的, 略过
 
-#### 2. 配置GOPATH
+### 2. 配置GOPATH
 
 将以下代码添加到 .bashrc 或者 .zshrc
 
@@ -35,7 +35,7 @@ GOPATH下将会生成3个目录
 * pkg 编译后生成的文件, 一般是各种 .a
 * bin 编译后生成的可执行文件
 
-#### 3. IDE搭建
+### 3. IDE搭建
 
 1. ST3
 
