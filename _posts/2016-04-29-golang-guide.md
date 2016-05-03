@@ -27,3 +27,6 @@ categories: [golang]
 **5. 根据 Heroku Platform API 的设计经验总结而来的 HTTP API 设计指南**
 
 [https://github.com/mikespook/http-api-design-zh-cn](https://github.com/mikespook/http-api-design-zh-cn)
+
+**6. Go语言编程模式**
+[http://www.techug.com/go-patterns](http://www.techug.com/go-patterns)
