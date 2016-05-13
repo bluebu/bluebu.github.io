@@ -144,3 +144,7 @@ apm install golang-debug
 - 上方点击debug后进入debug模式, 可以进行continue, next, stop, restart等常用的调试功能
 
 - 下方可以查看堆栈信息, goroutine, 当前变量, 还有断点, 这样在一个IDE里面就可以对golang进行运行时调试, 不再需要加一堆打印之类的代码, 或者频繁去控制台重启项目了
+
+点击下方, 查看介绍动画:
+
+[Hi-Ruby.com Mac下在安装Devle-features](/images/posts/golang-debug/features.gif)
