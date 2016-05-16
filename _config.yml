@@ -8,7 +8,7 @@
 # Site settings
 title: Hi-Ruby中文站
 email: support@hi-ruby.com
-description: 
+description:
   Hi-Ruby中文站
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://www.hi-ruby.com" # the base hostname & protocol for your site
@@ -23,11 +23,12 @@ paginate: 10
 paginate_path: "/pages/:num"
 
 kramdown:
-  input: GFM 
+  input: GFM
   syntax_highlighter: rouge
 
-gems: 
+gems:
   - jekyll-paginate
+  - jekyll-sitemap
 
 sitemap:
   file: "/sitemap.xml"
