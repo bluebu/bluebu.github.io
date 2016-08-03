@@ -10,7 +10,8 @@ script:
   - bundle exec jekyll build
 
 after_success:
-    "curl --ftp-create-dirs -T _site -u $FTP_USER:$FTP_PASSWORD $FTP_ADDRESS"
+  - "echo curl --ftp-create-dirs -T _site -u $FTP_USER:$FTP_PASSWORD $FTP_ADDRESS"
+  - "curl --ftp-create-dirs -T _site -u $FTP_USER:$FTP_PASSWORD $FTP_ADDRESS"
 
 branches:
   only:
