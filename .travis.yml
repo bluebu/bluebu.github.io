@@ -2,8 +2,15 @@ language: ruby
 rvm:
   - 2.2
 
+cache:
+  directories:
+    - vendor
+
 script:
   - bundle exec jekyll build
+
+after_success:
+    "curl --ftp-create-dirs -T _site -u $FTP_USER:$FTP_PASSWORD $FTP_ADDRESS"
 
 branches:
   only:
@@ -12,5 +19,6 @@ branches:
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+  - FTP_ADDRESS=ftp://qxu1146520061.my3w.com/htdocs/hi-ruby.com
 
 sudo: false # route your build to the container-based infrastructure for a faster build
