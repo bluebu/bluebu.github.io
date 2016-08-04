@@ -6,7 +6,7 @@ cache:
   directories:
     - vendor
 
-install:
+before_install:
   - sudo apt-get install ncftp
 
 script:
