@@ -1,25 +1,4 @@
-<IfModule mod_gzip.c>
-    mod_gzip_on       Yes
-    mod_gzip_dechunk  Yes
-    mod_gzip_item_include file      \.(html?|txt|css|js|font)$
-    mod_gzip_item_include handler   ^cgi-script$
-    mod_gzip_item_include mime      ^text/.*
-    mod_gzip_item_include mime      ^application/x-javascript.*
-    mod_gzip_item_exclude mime      ^image/.*
-    mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
-</IfModule>
-
-
-
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.+)$ /$1.html [L,QSA]
-RewriteRule ^cat/(.+)(/)(.*)$ /articles/$1$3 [R=301,L]
-RewriteRule ^articles/(.+)(/)(.*)$$ /posts/$1$3 [R=301,L]
-RewriteRule ^about_me(/)(.*)$$ /about$2 [R=301,L]
-
+RewriteBase /hi-ruby.com
 </IfModule>
