@@ -6,12 +6,14 @@ cache:
   directories:
     - vendor
 
+before_script:
+  - apt-get install ncftp
+
 script:
   - bundle exec jekyll build
 
 after_success:
-  - "echo curl --ftp-create-dirs -T _site -u $FTP_USER:$FTP_PASSWORD $FTP_ADDRESS"
-  - "curl --ftp-create-dirs -T _site -u $FTP_USER:$FTP_PASSWORD $FTP_ADDRESS"
+  - "ncftpput -R -v -u "$FTP_USER" -p "$FTP_PASSWORD" $FTP_HOST $FTP_PATH _site/*"
 
 branches:
   only:
@@ -20,6 +22,7 @@ branches:
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
-  - FTP_ADDRESS=ftp://qxu1146520061.my3w.com/htdocs/hi-ruby.com
+  - FTP_HOST=qxu1146520061.my3w.com
+  - FTP_PATH=/htdocs/hi-ruby.com
 
 sudo: false # route your build to the container-based infrastructure for a faster build
