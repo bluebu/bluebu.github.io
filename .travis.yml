@@ -7,7 +7,7 @@ cache:
     - vendor
 
 before_script:
-  - apt-get install ncftp
+  - sudo apt-get install ncftp
 
 script:
   - bundle exec jekyll build
@@ -25,4 +25,4 @@ env:
   - FTP_HOST=qxu1146520061.my3w.com
   - FTP_PATH=/htdocs/hi-ruby.com
 
-sudo: false # route your build to the container-based infrastructure for a faster build
+sudo: required # route your build to the container-based infrastructure for a faster build
