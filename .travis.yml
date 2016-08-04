@@ -13,7 +13,7 @@ script:
   - bundle exec jekyll build
 
 after_success:
-  - "ncftpput -R -v -u –r5 -t10 $FTP_USER -p $FTP_PASSWORD $FTP_HOST $FTP_PATH _site/*"
+  - "ncftpput -R -v -u –r 5 -t 10 $FTP_USER -p $FTP_PASSWORD $FTP_HOST $FTP_PATH _site/*"
 
 branches:
   only:
