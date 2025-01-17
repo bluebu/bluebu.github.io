@@ -4,23 +4,17 @@ layout: default
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 <h1 class="title" itemprop="name headline">{{ page.title }}</h1>
 <div class="info">
-   <!--  <i class="icon-folder-open"></i> <%= link_to(@category.name, "/cat/#{@category.abbrev}", title: "查看#{@category.name}分类")%> -->
-
     <i class="icon-folder-open"></i>
     {% for category in page.categories %}
       <a href="/categories/{{ category}}">{{ category}}</a>
     {% endfor %}
      &nbsp;&nbsp;
      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>
-    <div class="pull-right">
-      {{ include jiathis.html }}
-    </div>
-        
 </div>
 <hr/>
 <div class="permalink-box">
 <span class="label label-info">Hello!</span>
-如果觉得不错的话，并且不吝转载时，请顺便添加上这篇文章的链接 <code>http://www.hi-ruby.com{{ page.url }}</code>
+如果觉得不错的话，并且不吝转载时，请顺便添加上这篇文章的链接 <code>https://www.hi-ruby.com{{ page.url }}</code>
 </div>
 
 <div class="full_content post-content" itemprop="articleBody">
