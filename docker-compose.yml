@@ -1,0 +1,16 @@
+version: "3"
+services:
+  jekyll:
+    image: ruby:3.4.1
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/srv/jekyll
+      - bundle_cache:/usr/local/bundle
+    working_dir: /srv/jekyll
+    command: bash -c "bundle install && bundle exec jekyll serve --host 0.0.0.0 --watch --future --drafts "
+    environment:
+      - JEKYLL_ENV=development
+
+volumes:
+  bundle_cache:
