@@ -6,9 +6,13 @@ permalink: "/posts/traefik-service-discovery"
 categories: [ops]
 ---
 
-之前团队用 Kubernetes 跑了一年多，说实话有点受够了。我们的业务规模根本用不到 K8s 那套东西，但 Helm chart、Ingress controller、Service mesh 这些东西一个都少不了，运维复杂度远超业务本身的复杂度。后来下决心砍掉 K8s，退回 Docker Compose——就是一个 `docker-compose.yml`，`up -d` 就跑，挂了 `restart: always` 自己拉起来，够用了。
+20 套集成测试环境，每套十几个服务，全要独立路由。这就是逼我们从 Nginx 切到 Traefik 的直接原因。
 
-但 Compose 有个绕不开的问题：服务发现。K8s 里 Service + Ingress 天然解决了这事，退回 Compose 之后你得自己搞。最开始用 Nginx，每次加个服务都要改配置然后 reload，烦了。后来换成 Traefik v3，它的 Docker Provider 能自动感知容器变化，服务起来就有路由，停掉就没了，不用碰任何配置文件。算是在 Compose 这套简单粗暴的架构上，把服务发现这块短板补上了。
+做高频交易系统的人大概都有同感——K8s 那套东西看着很美，但我们的场景用不上。交易链路对实时性和一致性要求极高，不是传统微服务那种弹性伸缩的玩法，Helm chart、Service mesh 带来的运维复杂度反而是纯负担。公司之前试过，最终还是退回了 Docker Compose，简单粗暴——一个 `docker-compose.yml`，`up -d` 就跑，`restart: always` 兜底，够用。
+
+Nginx 一直是我们的网关，配置管理麻烦只是其次。真正不能忍的是：每次 `nginx -s reload`，交易模拟器的 WebSocket 连接全部闪断一次。20 套环境频繁加服务改路由，reload 是家常便饭，模拟器断一次就要重连、重新订阅行情、恢复状态——在跑集成测试的时候，这种闪断直接导致测试结果不可信。
+
+Traefik v3 解决了这个问题。它的 Docker Provider 自动感知容器变化，服务起来就有路由，停掉就没了。20 套环境的路由全靠 Docker labels 自描述，加一套环境就是 `docker compose up`，网关配置一行不用动。
 
 <!--more-->
 
