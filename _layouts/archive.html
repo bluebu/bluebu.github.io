@@ -16,6 +16,7 @@ layout: default
         <span class="label">原创</span>
         <% end -%> -->
     </h2>
+    <p class="muted"><small>{{ post.date | date: "%Y-%m-%d" }}</small></p>
     <div class="content">
       {{ post.excerpt | strip_html |  truncate: 225, '...' }}
       <a target="_blank" href="{{ post.url }}" title="查看更多">查看更多</a>
