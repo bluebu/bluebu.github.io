@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 修复 Stata-MCP 在 Claude Code 中的连接问题
-date: '2026-04-07T12:00:00+08:00'
+date: '2026-03-21T09:00:00+08:00'
 permalink: "/posts/stata-mcp-fix"
 categories: [ai]
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Compound Engineering插件介绍
-date: '2026-04-07T09:00:00+08:00'
+date: '2026-04-03T09:00:00+08:00'
 permalink: "/posts/compound-engineering-plugin"
 categories: [ai]
 ---
