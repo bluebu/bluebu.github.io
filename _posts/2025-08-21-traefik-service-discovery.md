@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 用 Traefik 替代 Nginx 做服务发现，聊聊我们踩过的坑
-date: '2026-01-03T09:00:00+08:00'
+date: '2025-08-21T09:00:00+08:00'
 permalink: "/posts/traefik-service-discovery"
 categories: [ops]
 ---
