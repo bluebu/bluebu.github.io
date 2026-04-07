@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 让 AI 写代码不翻车：Agent Harness 模式的由来
+title: Agent Harness 实践（一）：让 AI 写代码不翻车
 date: '2026-04-08T09:00:00+08:00'
 permalink: "/posts/agent-harness-pattern"
 categories: [ai]

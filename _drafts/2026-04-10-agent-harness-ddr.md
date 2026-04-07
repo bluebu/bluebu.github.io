@@ -1,6 +1,6 @@
 ---
 layout: post
-title: DDR 模式：让 AI 审计自己的工作
+title: Agent Harness 实践（三）：DDR 自我审计
 date: '2026-04-10T09:00:00+08:00'
 permalink: "/posts/agent-harness-ddr"
 categories: [ai]

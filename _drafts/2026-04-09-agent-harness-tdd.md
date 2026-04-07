@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TDD 红绿灯：给 AI 编码装上节拍器
+title: Agent Harness 实践（二）：TDD 红绿灯
 date: '2026-04-09T09:00:00+08:00'
 permalink: "/posts/agent-harness-tdd"
 categories: [ai]
