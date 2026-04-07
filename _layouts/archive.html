@@ -10,13 +10,10 @@ layout: default
 <ul class="articles">
   {% for post in site.categories.[page.title]  %}
   <li>
-    <h2>
+    <h2 style="display:flex;justify-content:space-between;align-items:baseline;">
         <a class="post-link" href="{{ post.url }}" target="_blank" title="{{ post.title }}">{{ post.title }}</a>
-        <!-- <% if article.original %>
-        <span class="label">原创</span>
-        <% end -%> -->
+        <small class="muted" style="white-space:nowrap;margin-left:1em;font-size:14px;">{{ post.date | date: "%Y-%m-%d" }}</small>
     </h2>
-    <p class="muted"><small>{{ post.date | date: "%Y-%m-%d" }}</small></p>
     <div class="content">
       {{ post.excerpt | strip_html |  truncate: 225, '...' }}
       <a target="_blank" href="{{ post.url }}" title="查看更多">查看更多</a>
