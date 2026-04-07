@@ -16,7 +16,7 @@ twitter_username: bluebu2010
 github_username:  bluebu
 timezone: Asia/Shanghai
 encoding: utf-8
-future: true
+future: false
 
 # Build settings
 markdown: kramdown
