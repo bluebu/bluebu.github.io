@@ -7,12 +7,13 @@ permalink: "/agent-harness/"
 <h1>Agent Harness 实践</h1>
 <p class="muted">用架构约束 AI，而不是用 prompt 求 AI。</p>
 
+
 <ul class="articles">
   <li>
     <h2><a href="/posts/agent-harness-pattern">一、让 AI 写代码不翻车</a></h2>
     <div class="content">背景、问题、Agent Harness 四层架构概述</div>
   </li>
-  <li>
+  <!-- <li>
     <h2><a href="/posts/agent-harness-tdd">二、TDD 红绿灯</a></h2>
     <div class="content">strict / fix 模式，单语言闭环，不跳红、测试只读、禁删用例</div>
   </li>
@@ -39,5 +40,6 @@ permalink: "/agent-harness/"
   <li>
     <h2><a href="/posts/agent-harness-cheatsheet">终篇、速查手册</a></h2>
     <div class="content">纯干货，模板 + 结构，拿去抄</div>
-  </li>
+  </li> -->
 </ul>
+
