@@ -1006,7 +1006,21 @@ table {
   max-width: 100%;
   background-color: transparent;
   border-collapse: collapse;
-  border-spacing: 0
+  border-spacing: 0;
+}
+.content table, .span8 table {
+  width: 100%;
+  margin: 15px 0;
+}
+.content table th, .span8 table th,
+.content table td, .span8 table td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 14px;
+}
+.content table th, .span8 table th {
+  background: #f9f9f9
 }
 .table {
   width: 100%;
