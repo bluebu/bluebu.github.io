@@ -76,7 +76,7 @@ labels:
 条件可以组合，`&&` 和 `||` 随便拼：
 
 ```yaml
-- "traefik.http.routers.shanhai.rule=Host(`shanhai.example.com`) && (PathPrefix(`/http`) || PathPrefix(`/rest`) || PathPrefix(`/api/v3`))"
+- "traefik.http.routers.demo.rule=Host(`demo.example.com`) && (PathPrefix(`/http`) || PathPrefix(`/rest`) || PathPrefix(`/api/v3`))"
 ```
 
 TCP 也能路由，我们用来跑 FIX 协议。`tls.passthrough=true` 让 TLS 终止交给后端处理，Traefik 只做四层转发：
