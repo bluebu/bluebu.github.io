@@ -1,3 +1,3 @@
 User-agent: *
-Sitemap: http://www.hi-ruby.com/sitemap.xml
+Sitemap: https://www.hi-ruby.com/sitemap.xml
 Disallow: /feed.xml
