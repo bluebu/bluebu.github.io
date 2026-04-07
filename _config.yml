@@ -11,7 +11,7 @@ email: support@hi-ruby.com
 description:
   Hi-Ruby中文站
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://www.hi-ruby.com" # the base hostname & protocol for your site
+url: "https://www.hi-ruby.com" # the base hostname & protocol for your site
 twitter_username: bluebu2010
 github_username:  bluebu
 timezone: Asia/Shanghai
