@@ -3,7 +3,7 @@ layout: post
 title: 用 Traefik 替代 Nginx 做服务发现，聊聊我们踩过的坑
 date: '2026-04-07T11:00:00+08:00'
 permalink: "/posts/traefik-service-discovery"
-categories: [ai]
+categories: [ops]
 ---
 
 之前团队用 Kubernetes 跑了一年多，说实话有点受够了。我们的业务规模根本用不到 K8s 那套东西，但 Helm chart、Ingress controller、Service mesh 这些东西一个都少不了，运维复杂度远超业务本身的复杂度。后来下决心砍掉 K8s，退回 Docker Compose——就是一个 `docker-compose.yml`，`up -d` 就跑，挂了 `restart: always` 自己拉起来，够用了。
