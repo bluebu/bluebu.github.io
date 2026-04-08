@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Agent Harness 实践
-permalink: "/agent-harness/"
+permalink: "/series/agent-harness/"
 ---
 
 <h1>Agent Harness 实践</h1>

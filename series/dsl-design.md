@@ -1,7 +1,7 @@
 ---
 layout: default
 title: DSL 开发实践
-permalink: "/dsl-design/"
+permalink: "/series/dsl-design/"
 ---
 
 <h1>DSL 开发实践</h1>
