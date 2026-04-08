@@ -9,6 +9,7 @@ permalink: "/series/agent-harness/"
 
 
 <ul class="articles">
+<!-- 
   <li>
     <h2><a href="/posts/agent-harness-pattern">一、让 AI 写代码不翻车</a></h2>
     <div class="content">背景、问题、Agent Harness 四层架构概述</div>
@@ -17,7 +18,7 @@ permalink: "/series/agent-harness/"
     <h2><a href="/posts/agent-harness-tdd">二、TDD 红绿灯</a></h2>
     <div class="content">strict / fix 模式，单语言闭环，不跳红、测试只读、禁删用例</div>
   </li>
-  <!-- <li>
+  <li>
     <h2><a href="/posts/agent-harness-ddr">三、DDR 自我审计</a></h2>
     <div class="content">Detect → Diagnose → Remediate，plan 文件为什么是关键</div>
   </li>
