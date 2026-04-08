@@ -7,9 +7,11 @@ permalink: "/series/dsl-design/"
 <h1>DSL 开发实践</h1>
 <p class="muted">一门交易 DSL 的设计、实现与演进全记录。</p>
 
-
+{% if jekyll.environment == "production" %}
+<p class="muted">部分内容需要脱敏，暂时关闭浏览。</p>
+{% else %}
 <ul class="articles">
-  <!-- <li>
+  <li>
     <h2><a href="/posts/dsl-parser-evolution">一、三代解析器演进，从正则到 ANTLR4</a></h2>
     <div class="content">正则硬拆 → JFlex + JavaCUP → ANTLR4，每一次重写背后的业务驱动力</div>
   </li>
@@ -32,5 +34,6 @@ permalink: "/series/dsl-design/"
   <li>
     <h2><a href="/posts/dsl-ai-acceleration">六、AI 加速，三周干完三个月的活</a></h2>
     <div class="content">Playground、Demo、组件库——AI + Agent Harness 如何让"懒得做"变成"做了"</div>
-  </li> -->
+  </li>
 </ul>
+{% endif %}

@@ -7,9 +7,10 @@ permalink: "/series/agent-harness/"
 <h1>Agent Harness 实践</h1>
 <p class="muted">用架构约束 AI，而不是用 prompt 求 AI。</p>
 
-
+{% if jekyll.environment == "production" %}
+<p class="muted">部分内容需要脱敏，暂时关闭浏览。</p>
+{% else %}
 <ul class="articles">
-<!-- 
   <li>
     <h2><a href="/posts/agent-harness-pattern">一、让 AI 写代码不翻车</a></h2>
     <div class="content">背景、问题、Agent Harness 四层架构概述</div>
@@ -41,6 +42,6 @@ permalink: "/series/agent-harness/"
   <li>
     <h2><a href="/posts/agent-harness-cheatsheet">终篇、速查手册</a></h2>
     <div class="content">纯干货，模板 + 结构，拿去抄</div>
-  </li> -->
+  </li>
 </ul>
-
+{% endif %}
